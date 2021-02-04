@@ -10,13 +10,16 @@
     "storybook:serve": "vue-cli-service storybook:serve -p 6006 -c config/storybook"
   },
   "dependencies": {
+    "@jamescoyle/vue-icon": "^0.1.0",
+    "@mdi/js": "^5.9.55",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "autoprefixer": "^9.8.6",
     "bootstrap-vue": "^2.17.3",
     "core-js": "^3.6.5",
     "postcss": "^7.0.35",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-advanced-cropper": "^1.2.5"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^6.0.26",
