@@ -3,6 +3,9 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+import '@/assets/css/tailwind.css'
+import '@/assets/scss/custom.scss'
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')

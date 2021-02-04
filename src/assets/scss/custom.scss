@@ -1,0 +1,43 @@
+// Typography overrides
+$font-family-sans-serif: "Barlow", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// 6Connex brand colors
+$brand-primary: #273b85;
+
+// Color overrides
+$primary: $brand-primary;
+
+// Used by bootstrap-vue as a weird generated color variant for <alert> component with `variant="info"`
+$info: #1e88e5;
+
+// Include bootstrap and bootstrap-vue
+@import "~bootstrap";
+@import "~bootstrap-vue";
+
+// Browse button for b-file-input component
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  background-color: white;
+}
+
+// Helper class to set minimum width of columns in b-table
+.minw-90px {
+  min-width: 90px;
+}
+
+.minw-110px {
+  min-width: 110px;
+}
+
+.minw-150px {
+  min-width: 150px;
+}
+
+.minw-200px {
+  min-width: 200px;
+}
+
+.minw-315px {
+  min-width: 315px;
+}
