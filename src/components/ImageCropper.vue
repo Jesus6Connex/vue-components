@@ -4,8 +4,6 @@
     body-class="tw-text-center tw-p-0 tw-m-0"
     centered
     title="Crop image"
-    no-close-on-backdrop
-    no-close-on-esc
     hide-header-close
   >
     <template #modal-title >
@@ -88,19 +86,23 @@ export default {
   props: {
     modalShow: {
       type: Boolean,
-      required: true
+      required: true,
+      default: true
     },
     img: {
       type: String,
-      required: true
+      required: true,
+      default: null
     },
     w: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     },
     h: {
       type: Number,
-      required: true
+      required: true,
+      default: 0
     }
   },
   methods: {
@@ -120,10 +122,10 @@ export default {
         ctx.drawImage(img, 0, 0, this.w, this.h)
         this.$emit('cropped', canvas.toDataURL('image/png'))
       }.bind(this)
-      this.loading = true
+      //this.loading = true
     },
     cancel () {
-      this.loading = true
+      //this.loading = true
       this.$emit('canceled', this.img)
     }
   }

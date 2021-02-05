@@ -1,30 +1,59 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import { storiesOf } from '@storybook/vue'
 import ImageCropper from '@/components/ImageCropper'
+import { action } from '@storybook/addon-actions';
+import { useArgs } from '@storybook/client-api';
 
 // Tailwind utility classes
 import '@/assets/css/tailwind.css'
 // Import custom bootstrap overrides
 import '@/assets/scss/custom.scss'
 
-storiesOf('ImageCropper', module)
-  .add('Cropper', () => ({
+export default {
+  title: 'ImageCropper',
+  component: ImageCropper,
+  // Our exports that end in "Data" are not stories.
+  excludeStories: /.*Data$/,
+  argTypes: {
+    modalShow: {
+      control: false,
+    }
+  }
+};
+
+export const actionsData = {
+  onCropped: action('crop'),
+  onCancel: action('cancel'),
+};
+
+const Template = (args, { argTypes }) => {
+  return {
     components: { ImageCropper },
-    template:
-    `
-      <image-cropper
-        :modalShow="cropper.show"
-        :img="cropper.img"
-        :h="cropper.height"
-        :w="cropper.width"
+    props: Object.keys(argTypes),
+    methods: actionsData,
+    template: `
+      <div>
+      <button class="tw-px-4 tw-py-2">Open Modal</button>
+      <ImageCropper
+        v-bind="$props"
+        @cropped="onCropped"
+        @canceled="onCancel"
       />
+      </div>
     `,
-    data: () => ({
-      cropper: {
-        show: true,
-        img: require('@/assets/logo.png'),
-        height: 50,
-        width: 100
-      }
-    })
-  }))
+  };
+};
+
+export const Primary = Template.bind({});
+Primary.args = {
+  modalShow: true,
+  img: require('@/assets/logo.png'),
+  w: 50,
+  h: 50
+};
+
+export const Loading = Template.bind({});
+Primary.args = {
+  modalShow: true,
+  img: null,
+  w: 50,
+  h: 50
+};
